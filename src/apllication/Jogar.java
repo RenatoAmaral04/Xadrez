@@ -1,6 +1,8 @@
 package apllication;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import boardgame.Position;
@@ -16,21 +18,31 @@ public class Jogar {
 
 		Scanner ff = new Scanner(System.in);
 		PartidaXadrez partida = new PartidaXadrez();
+		List<PecaXadrez> capturada = new ArrayList<>();
 		
-		while(true) {
+		while(!partida.getCheckMate()) {
 			try {
 				
 				UI.clearScreen();
-				UI.printTabuleiro(partida.getPecas());
+				UI.printPartida(partida, capturada);
 				System.out.println();
 				System.out.println("Origem: ");
 				PosicaoXadrez origem = UI.receberPosicao(ff);
+				
+				boolean[][] possiveisMov = partida.possiveisMov(origem);
+				UI.clearScreen();
+				UI.printTabuleiro(partida.getPecas(), possiveisMov);
+				System.out.println();
 				
 				System.out.println();
 				System.out.println("Destino: ");
 				PosicaoXadrez destino = UI.receberPosicao(ff);
 				
 				PecaXadrez pecaCapturada = partida.movimentoPeca(origem, destino);
+				
+				if(pecaCapturada != null) {
+					capturada.add(pecaCapturada);
+				}
 				
 			}catch (InputMismatchException e) {
 				System.out.println(e.getMessage());
@@ -42,6 +54,8 @@ public class Jogar {
 			}
 			
 		}
+		UI.clearScreen();
+		UI.printPartida(partida, capturada);
 		
 		
 	}

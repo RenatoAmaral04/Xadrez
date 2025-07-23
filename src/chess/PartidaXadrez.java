@@ -1,6 +1,6 @@
 package chess;
 
-import java.security.InvalidParameterException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -126,7 +126,7 @@ public class PartidaXadrez {
 			throw new IllegalStateException("Não da pra promover a peça");
 		}
 		if(!type.equals("B") && !type.equals("C") && !type.equals("D") && !type.equals("T")) {
-			throw new InvalidParameterException("Peça selecionada, não é válida");
+			return promocao;
 		}
 		
 		Position pos = promocao.getPosicaoXadrez().toPosition();

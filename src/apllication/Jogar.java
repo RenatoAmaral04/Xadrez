@@ -46,7 +46,13 @@ public class Jogar {
 				
 				if(partida.getPromocao() != null) {
 					System.out.println("Digite apara qual peca você quer promover (B/C/D/T): ");
-					String type = ff.nextLine();
+					String type = ff.nextLine().toUpperCase();
+					partida.pecaPromovida(type);
+					
+					while(!type.equals("B") && !type.equals("C") && !type.equals("D") && !type.equals("T") ) {
+						System.out.println("Valor inválido!! Digite apara qual peca você quer promover (B/C/D/T): ");
+						type = ff.nextLine().toUpperCase();
+					}
 					partida.pecaPromovida(type);
 				}
 				

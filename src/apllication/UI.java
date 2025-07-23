@@ -60,15 +60,15 @@ public class UI {
 		System.out.println("Jogada " + partidaXadrez.getVezJogar());
 		System.out.println("Vez das: " + partidaXadrez.getJogador());
 		
-		if(!partidaXadrez.getCheckMate()) {
+		if(partidaXadrez.getCheckMate()) {
+			System.out.println("CHECKMATE!! ");
+			System.out.println("Vencedor: " + partidaXadrez.getJogador());
 			
-			System.out.println("Waiting player: " + partidaXadrez.getJogador());
 			
-			if(partidaXadrez.getCheck()) {
-				System.out.println("CHECK");
+			
 			}else {
-				System.out.println("CHECKMATE: ");
-				System.out.println("Vencedor: " + partidaXadrez.getJogador());
+				if(partidaXadrez.getCheck()) {
+					System.out.println("CHECK");
 			}
 		}
 		
@@ -104,7 +104,7 @@ public class UI {
 	private static void printPeca(PecaXadrez peca, boolean background) {
 		
 		if(background) {
-			System.out.println(ANSI_BLUE_BACKGROUND);
+			System.out.print(ANSI_BLUE_BACKGROUND);
 		}
 		
 		if (peca == null) {
@@ -112,11 +112,12 @@ public class UI {
 		}else {
 			
 			if(peca.getColor() == Color.WHITE) {
-				System.out.print(ANSI_WHITE + peca + ANSI_RESET);
+				System.out.print(ANSI_WHITE + peca);
 			} else {
-				System.out.print(ANSI_YELLOW + peca + ANSI_RESET);
+				System.out.print(ANSI_YELLOW + peca);
 			}
 		}
+		 System.out.print(ANSI_RESET);
 		System.out.print(" ");
 	}
 	

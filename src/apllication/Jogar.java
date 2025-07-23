@@ -44,6 +44,12 @@ public class Jogar {
 					capturada.add(pecaCapturada);
 				}
 				
+				if(partida.getPromocao() != null) {
+					System.out.println("Digite apara qual peca você quer promover (B/C/D/T): ");
+					String type = ff.nextLine();
+					partida.pecaPromovida(type);
+				}
+				
 			}catch (InputMismatchException e) {
 				System.out.println(e.getMessage());
 				ff.nextLine();
